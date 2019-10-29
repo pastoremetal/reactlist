@@ -1,6 +1,6 @@
 // @flow
 import theme from 'styled-theming';
-import type { ThemeProps } from './types';
+// import type { ThemeProps } from './types';
 import colors from './colors';
 
 export const backgroundColor = theme('mode', {
@@ -12,16 +12,25 @@ export const headerColor = theme('mode', {
   dark: colors.grey[800],
 });
 
+const breakpoints = {
+  xs: '0',
+  sm: '576px',
+  md: '768px',
+  lg: '992px',
+  xl: '1200px',
+};
+
 const fontSize = theme('fontSize', {
-  heading1: 6,
-  heading2: 3.75,
-  heading3: 3,
-  heading4: 2.125,
-  heading5: 1.5,
-  heading6: 1.25,
-  button: 0.875,
-  body: 0.85,
+  heading1: '6',
+  heading2: '3.75',
+  heading3: '3',
+  heading4: '2.125',
+  heading5: '1.5',
+  heading6: '1.25',
+  button: '0.875',
+  body: '0.85',
 });
+
 const textColor = theme('mode', {
   light: theme('colorVariant', {
     normal: colors.grey.A400,
@@ -35,11 +44,20 @@ const textColor = theme('mode', {
   }),
 });
 
-const Theme: ThemeProps = {
+const fontWeight = theme('fontWeight', {
+  light: '300',
+  regular: '400',
+  medium: '500',
+  bold: '700',
+});
+
+const Theme = {
   backgroundColor,
   headerColor,
   fontSize,
   textColor,
+  fontWeight,
+  breakpoints,
 };
 
 export default Theme;

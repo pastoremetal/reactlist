@@ -8,9 +8,11 @@ const Typography = ({
   children,
   size,
   color,
+  weight,
+  lineHeight,
 }: TypographyProps) => (
-  <ThemeProvider theme={{ fontSize: size, colorVariant: color }}>
-    <StyledTypography size={size} as={tag} color={color}>
+  <ThemeProvider theme={{ fontSize: size, colorVariant: color, fontWeight: weight }}>
+    <StyledTypography as={tag} lineHeight={lineHeight}>
       {children}
     </StyledTypography>
   </ThemeProvider>
@@ -20,6 +22,7 @@ Typography.defaultProps = {
   tag: 'p',
   size: 'body',
   color: 'normal',
+  weight: 'regular',
 };
 
 

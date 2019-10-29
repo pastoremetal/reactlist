@@ -6,7 +6,27 @@ import type { BoxProps } from './types';
 const Box = ({
   tag,
   children,
-}: BoxProps) => <StyledBox as={tag}>{children}</StyledBox>;
+  maxWidth,
+  alignSelf,
+  width,
+  mt,
+  mb,
+  pb,
+  pt,
+}: BoxProps) => (
+  <StyledBox
+    as={tag}
+    maxWidth={maxWidth}
+    alignSelf={alignSelf}
+    width={width}
+    mt={mt}
+    mb={mb}
+    pt={pt}
+    pb={pb}
+  >
+    {children}
+  </StyledBox>
+);
 
 Box.defaultProps = {
   tag: 'div',

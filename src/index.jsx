@@ -2,6 +2,7 @@
 import React, { Fragment } from 'react';
 import ReactDom from 'react-dom';
 import { ThemeProvider } from 'styled-components';
+import 'typeface-roboto';
 import Layout from './Layout';
 
 const AppWrapper = () => (
