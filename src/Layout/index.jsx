@@ -1,11 +1,16 @@
 // @flow
 import React from 'react';
-import {DivHeader, Container} from "./styles";
+import { DivHeader, Container } from './styles';
 import { Flex, Box } from '../components/FlexBox';
+import Typography from '../components/Typography';
 
 
 export const Header = () => (
-  <Flex tag={DivHeader}>ReactList</Flex>
+  <Flex tag={DivHeader}>
+    <Typography color="light" size="heading5">
+      ReactList
+    </Typography>
+  </Flex>
 );
 
 export const Layout = () => (

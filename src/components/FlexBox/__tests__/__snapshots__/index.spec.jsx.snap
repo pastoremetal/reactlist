@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Box should be a div for default 1`] = `
+<div
+  class="sc-bdVaJa cnkOUi"
+/>
+`;
+
+exports[`Box should be a given component 1`] = `<header />`;
+
+exports[`Box should contain a given child component 1`] = `
+<div
+  class="sc-bdVaJa cnkOUi"
+>
+  <header>
+    foo
+  </header>
+</div>
+`;
+
+exports[`Flex should be a div for default 1`] = `
+<div
+  class="sc-bwzfXH jIEWCi"
+/>
+`;
+
+exports[`Flex should be a given component 1`] = `<header />`;
+
+exports[`Flex should contain a given child component 1`] = `
+<div
+  class="sc-bwzfXH jIEWCi"
+>
+  <header>
+    foo
+  </header>
+</div>
+`;
