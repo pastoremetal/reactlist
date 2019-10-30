@@ -1,32 +1,39 @@
+/* eslint-disable react/no-array-index-key */
 import React, { type Node } from 'react';
-import styled from 'styled-components';
 import { Flex, Box } from '../FlexBox';
-import { StyledUl } from './styles';
+import Typography from '../Typography';
+import { StyledUl, StyledLink } from './styles';
 
-const Button = styled.button`
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #ccc;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  
-  :hover {
-    background-color: #ccc;
-  }
-`;
-
-const BoxList = ({ children }: {children: Node}) => (
+const BoxList = ({ children, onClick }: {children: Node, onClick: string => {}}) => (
   <li>
-    <Box tag={Button} pt="1.5rem" pb="1.5rem">{children}</Box>
+    <Typography onClick={onClick} tag={StyledLink}>{children}</Typography>
   </li>
 );
 
-const SuggestionList = () => (
-  <Flex tag={StyledUl} mt="-1px">
-    <BoxList>Option 1</BoxList>
-    <BoxList>Option 2</BoxList>
-    <BoxList>Option 3</BoxList>
+const SuggestionList = (
+  { suggestions, geocoder, setAddress }
+    : {suggestions: [], geocoder: string => {}, setAddress: (number, number) => {}},
+) => (
+  <Flex mt="-1px">
+    <Box tag={StyledUl}>
+      {
+        suggestions.map((suggestion, i) => (
+          <BoxList
+            key={i}
+            onClick={() => {
+              geocoder({ placeId: suggestion.place_id }, (place) => (
+                setAddress({
+                  lat: place[0].geometry.location.lat().toString(),
+                  long: place[0].geometry.location.lat().toString(),
+                })
+              ));
+            }}
+          >
+            {suggestion.description}
+          </BoxList>
+        ))
+      }
+    </Box>
   </Flex>
 );
 

@@ -1,19 +1,50 @@
-import React from 'react';
-import { Flex, Box } from '../components/FlexBox';
+import React, { useState } from 'react';
+import ScriptLoader from 'react-script-loader-hoc';
+import { Flex } from '../components/FlexBox';
 import { InputForm } from '../components/Form';
 import SuggestionList from '../components/Suggestion';
-import { getSuggestion } from './utils';
 
-const Address = () => (
-  <Flex alignItems="center">
-    <InputForm
-      width={[1, 1, 1, 10 / 12]}
-      label="Your address"
-      name="address"
-      suggestion={<SuggestionList />}
-      onKeyUp={(val) => { getSuggestion({ address: val.target.value }); }}
-    />
-  </Flex>
-);
+const Address = (
+  { scriptsLoadedSuccessfully, uuid, setAddress }
+  : {scriptsLoadedSuccessfully: boolean, uuid: string, setAddress: (number, number) => {}},
+) => {
+  const [suggestions, setSuggestions] = useState();
+  const gMaps = global.google ? global.google.maps : null;
+  const autoComplete = gMaps ? new gMaps.places.AutocompleteService() : null;
+  const geoCoder = gMaps ? new gMaps.Geocoder() : null;
+  if (scriptsLoadedSuccessfully) {
+    return (
+      <Flex alignItems="center">
+        <InputForm
+          width={[1, 1, 1, 10 / 12]}
+          label="Your address"
+          name="address"
+          suggestion={
+            suggestions && (
+              <SuggestionList
+                suggestions={suggestions}
+                geocoder={geoCoder.geocode}
+                setAddress={setAddress}
+              />
+            )
+          }
+          onKeyUp={(e) => {
+            autoComplete.getQueryPredictions(
+              {
+                input: e.target.value,
+                sessionToken: uuid,
+                types: ['route'],
+                componentRestrictions: {country: 'br'},
+              }, (predictions, status) => (
+                gMaps.places.PlacesServiceStatus.OK === status && setSuggestions(predictions)
+              ),
+            );
+          }}
+        />
+      </Flex>
+    );
+  }
+  return null;
+};
 
-export default Address;
+export default ScriptLoader(`https://maps.googleapis.com/maps/api/js?key=${process.env.GMAPS_TOKEN}&libraries=places,geocoder`)(Address);
