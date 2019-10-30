@@ -1,26 +1,34 @@
 import styled from 'styled-components';
 
+export const StyledInput = styled.input`
+  padding: 18.5px 14px;
+  width: 100%;
+  border: 0;
+  height: 1.1875em;
+  margin: 0;
+  display: block;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+`;
+
 export const InputContainer = styled.div`
   cursor: text;
-  display: inline-flex;
   position: relative;
   box-sizing: border-box;
+  display: flex;
   align-items: center;
-  line-height: 1.1875rem;
   
   > label {
     transform: translate(1rem, -0.4rem) scale(0.75);
-    z-index: 1;
     transform-origin: top left;
     top: 0;
     left: 0;
     position: absolute;
-    display: block;
-    line-height: 1;
   }
 
   > fieldset {
-    top: -0.4rem;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -32,12 +40,10 @@ export const InputContainer = styled.div`
     border-radius: 4px;
     pointer-events: none;
     border-color: black;
-    
+
     > legend {
-      width: 63.5px;
-      padding: 0;
+      min-width: 4.5rem;
       text-align: left;
-      line-height: 11px;
     }
   }
 `;

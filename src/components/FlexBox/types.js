@@ -4,7 +4,7 @@ import { breakpoints } from '../../theme/types';
 
 export type BoxProps = {
   tag?: Component<any> | string,
-  children: Node,
+  children?: Node,
   maxWidth?: breakpoints | string,
   alignSelf?: string,
   width?: string | Array<number>,
@@ -18,6 +18,7 @@ export type FlexProps = {
   tag?: Component<any> | string,
   children: Node,
   direction?: string,
+  alignItems?: string,
   maxWidth?: string,
   width?: string | Array<number>,
   mb?: string | Array<number>,

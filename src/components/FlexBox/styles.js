@@ -12,14 +12,14 @@ function getMaxWidth(maxWidth) {
     : maxWidth;
 }
 
-function getWidth(prop, value) {
+function getMedia(prop, value) {
   if (typeof value === 'string') {
     return `${prop}: ${value};`;
   }
   if (typeof value === 'object') {
     return value.map((w, i) => {
       if (i === 0) {
-        return `value: ${w * 100}%`;
+        return `${prop}: ${w * 100}%`;
       }
       return (
         `@media (min-width: ${Object.values(Theme.breakpoints)[i]}) {
@@ -34,14 +34,15 @@ function getWidth(prop, value) {
 export const StyledBox = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
+  box-sizing: border-box;
   max-width: ${(props) => getMaxWidth(props.maxWidth)};
   align-self: ${(props) => props.alignSelf || 'unset'};
   ${(props) => [
-    getWidth('width', props.width),
-    getWidth('margin-top', props.mt),
-    getWidth('margin-bottom', props.mb),
-    getWidth('padding-top', props.pt),
-    getWidth('padding-bottom', props.pb),
+    getMedia('width', props.width),
+    getMedia('margin-top', props.mt),
+    getMedia('margin-bottom', props.mb),
+    getMedia('padding-top', props.pt),
+    getMedia('padding-bottom', props.pb),
   ].join('')}
 `;
 
@@ -49,11 +50,12 @@ export const StyledFlex = styled.div`
   display: flex;
   flex-direction: ${(props) => props.direction || 'column'};
   max-width: ${(props) => getMaxWidth(props.maxWidth)};
+  align-items: ${(props) => props.alignItems}}
   ${(props) => [
-    getWidth('width', props.width),
-    getWidth('margin-top', props.mt),
-    getWidth('margin-bottom', props.mb),
-    getWidth('padding-top', props.pt),
-    getWidth('padding-bottom', props.pb),
+    getMedia('width', props.width),
+    getMedia('margin-top', props.mt),
+    getMedia('margin-bottom', props.mb),
+    getMedia('padding-top', props.pt),
+    getMedia('padding-bottom', props.pb),
   ].join('')}
 `;

@@ -10,9 +10,10 @@ const Typography = ({
   color,
   weight,
   lineHeight,
+  ...props
 }: TypographyProps) => (
   <ThemeProvider theme={{ fontSize: size, colorVariant: color, fontWeight: weight }}>
-    <StyledTypography as={tag} lineHeight={lineHeight}>
+    <StyledTypography as={tag} lineHeight={lineHeight} {...props}>
       {children}
     </StyledTypography>
   </ThemeProvider>

@@ -7,6 +7,7 @@ const Flex = ({
   tag,
   children,
   direction,
+  alignItems,
   maxWidth,
   width,
   mt,
@@ -17,6 +18,7 @@ const Flex = ({
   <StyledFlex
     as={tag}
     direction={direction}
+    alignItems={alignItems}
     maxWidth={maxWidth}
     width={width}
     mt={mt}
