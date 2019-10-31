@@ -1,4 +1,7 @@
+// @flow
 import styled from 'styled-components';
+import Theme from '../../theme';
+
 
 export const StyledInput = styled.input`
   padding: 18.5px 14px;
@@ -25,6 +28,7 @@ export const InputContainer = styled.div`
     top: 0;
     left: 0;
     position: absolute;
+    color: ${Theme.formColors.border};
   }
 
   > fieldset {
@@ -39,7 +43,7 @@ export const InputContainer = styled.div`
     border-width: 1px;
     border-radius: 4px;
     pointer-events: none;
-    border-color: black;
+    border-color: ${Theme.formColors.border};
 
     > legend {
       min-width: 4.5rem;

@@ -6,9 +6,11 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
-    "lint": "eslint ./src/**/*.{js,jsx}",
-    "lint:fix": "eslint ./src/**/*.{js,jsx} --fix",
-    "test": "jest"
+    "test:lint": "eslint ./src/**/*.{js,jsx}",
+    "test:unit": "jest",
+    "test:flow": "flow",
+    "test:coverage": "jest --coverage",
+    "test": "yarn run test:lint && yarn run test:unit && yarn run test:flow && yarn run test:coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",

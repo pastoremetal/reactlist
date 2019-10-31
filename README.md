@@ -1,15 +1,45 @@
-# 🚀 Welcome to your new awesome project!
+# 🚀 React List
 
-This project has been created using **webpack scaffold**, you can now run
+## About
+This project was built using react, webpack, babel, styled-components and others.
 
+## Requirements
+node
+npm / yarn (yarn is used in this instructions but npm works too).
+
+## Running
+In order to run in development mode use:
 ```
-npm run build
+yarn start
 ```
 
-or
-
+To build production bundle, use:
 ```
 yarn build
 ```
 
-to bundle your application
+## Testing
+Unitary tests can be run with:
+```
+yarn test:unit
+```
+
+Linter test can be run with:
+```
+yarn test:lint
+```
+
+Flow can be run with:
+```
+yarn test:flow
+```
+
+Run coverage:
+```
+yarn test:coverage
+```
+
+Run all tests:
+```
+yarn test
+```

@@ -1,10 +1,11 @@
+// @flow
 /* eslint-disable react/no-array-index-key */
 import React, { type Node } from 'react';
 import { Flex, Box } from '../FlexBox';
 import Typography from '../Typography';
 import { StyledUl, StyledLink } from './styles';
 
-const BoxList = ({ children, onClick }: {children: Node, onClick: string => {}}) => (
+const BoxList = ({ children, onClick }: {children: Node, onClick: string => void}) => (
   <li>
     <Typography onClick={onClick} tag={StyledLink}>{children}</Typography>
   </li>
@@ -12,7 +13,7 @@ const BoxList = ({ children, onClick }: {children: Node, onClick: string => {}})
 
 const SuggestionList = (
   { suggestions, geocoder, setAddress }
-    : {suggestions: [], geocoder: string => {}, setAddress: (number, number) => {}},
+    : {suggestions: [], geocoder: (Object, ({}) => Object) => void, setAddress: ({}) => {}},
 ) => (
   <Flex mt="-1px">
     <Box tag={StyledUl}>

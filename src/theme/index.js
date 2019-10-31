@@ -12,6 +12,13 @@ export const headerColor = theme('mode', {
   dark: colors.grey[800],
 });
 
+export const formColors = {
+  border: theme('mode', {
+    light: colors.grey.A400,
+    dark: colors.grey['400'],
+  }),
+};
+
 const breakpoints = {
   xs: '0',
   sm: '576px',
@@ -58,6 +65,7 @@ const Theme = {
   textColor,
   fontWeight,
   breakpoints,
+  formColors,
 };
 
 export default Theme;

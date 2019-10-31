@@ -1,3 +1,4 @@
+// @flow
 import ApolloClient from 'apollo-boost';
 
 const graphqlClient = new ApolloClient({

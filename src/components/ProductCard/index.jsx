@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import Typography from '../Typography';
 import { Flex, Box } from '../FlexBox';

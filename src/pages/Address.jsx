@@ -7,7 +7,7 @@ import SuggestionList from '../components/Suggestion';
 
 const Address = (
   { scriptsLoadedSuccessfully, setAddress }
-  : {scriptsLoadedSuccessfully: boolean, setAddress: (number, number) => {}},
+  : {scriptsLoadedSuccessfully: boolean, setAddress: ({}) => {}},
 ) => {
   const [suggestions, setSuggestions] = useState();
   const gMaps = global.google ? global.google.maps : null;
@@ -24,12 +24,14 @@ const Address = (
             suggestions && (
               <SuggestionList
                 suggestions={suggestions}
+                // $FlowFixMe
                 geocoder={geoCoder.geocode}
                 setAddress={setAddress}
               />
             )
           }
           onKeyUp={(e) => {
+            // $FlowFixMe
             autoComplete.getPlacePredictions(
               {
                 input: e.target.value,
@@ -37,6 +39,7 @@ const Address = (
                 offset: 3,
                 componentRestrictions: { country: 'br' },
               }, (predictions, status) => (
+                // $FlowFixMe
                 gMaps.places.PlacesServiceStatus.OK === status && setSuggestions(predictions)
               ),
             );
@@ -49,5 +52,6 @@ const Address = (
 };
 
 export default ScriptLoader(
+  // $FlowFixMe
   `https://maps.googleapis.com/maps/api/js?key=${process.env.GMAPS_TOKEN}&libraries=places`,
 )(Address);

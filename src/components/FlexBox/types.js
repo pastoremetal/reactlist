@@ -1,6 +1,6 @@
 // @flow
 import type { Component, Node } from 'react';
-import { breakpoints } from '../../theme/types';
+import type { breakpoints } from '../../theme/types';
 
 export type BoxProps = {
   tag?: Component<any> | string,
