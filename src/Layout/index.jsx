@@ -16,7 +16,7 @@ export const Header = () => (
   </Flex>
 );
 
-export const Layout = ({ uuid }: {uuid: string}) => {
+export const Layout = () => {
   const [address, setAddress] = useState();
   return (
     <Flex tag={Container}>
@@ -24,7 +24,7 @@ export const Layout = ({ uuid }: {uuid: string}) => {
       <Box maxWidth="xl" alignSelf="center" width={[1, 10 / 12]} pt="2rem" pb="2rem">
         {
           !address
-            ? <Address uuid={uuid} setAddress={setAddress} />
+            ? <Address setAddress={setAddress} />
             : <Products address={address} />
         }
       </Box>

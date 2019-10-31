@@ -13,6 +13,8 @@ const Box = ({
   mb,
   pb,
   pt,
+  pl,
+  pr,
 }: BoxProps) => (
   <StyledBox
     as={tag}
@@ -23,6 +25,8 @@ const Box = ({
     mb={mb}
     pt={pt}
     pb={pb}
+    pl={pl}
+    pr={pr}
   >
     {children}
   </StyledBox>

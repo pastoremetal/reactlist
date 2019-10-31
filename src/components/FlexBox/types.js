@@ -12,6 +12,8 @@ export type BoxProps = {
   mt?: string | Array<number>,
   pb?: string | Array<number>,
   pt?: string | Array<number>,
+  pl?: string | Array<number>,
+  pr?: string | Array<number>,
 }
 
 export type FlexProps = {
@@ -19,10 +21,13 @@ export type FlexProps = {
   children: Node,
   direction?: string,
   alignItems?: string,
+  wrap?: boolean,
   maxWidth?: string,
   width?: string | Array<number>,
   mb?: string | Array<number>,
   mt?: string | Array<number>,
   pb?: string | Array<number>,
   pt?: string | Array<number>,
+  pl?: string | Array<number>,
+  pr?: string | Array<number>,
 };

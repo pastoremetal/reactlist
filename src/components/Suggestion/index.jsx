@@ -24,7 +24,7 @@ const SuggestionList = (
               geocoder({ placeId: suggestion.place_id }, (place) => (
                 setAddress({
                   lat: place[0].geometry.location.lat().toString(),
-                  long: place[0].geometry.location.lat().toString(),
+                  long: place[0].geometry.location.lng().toString(),
                 })
               ));
             }}

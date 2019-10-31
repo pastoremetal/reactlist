@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { StyledBox, StyledFlex } from './styles';
+import { StyledFlex } from './styles';
 import type { FlexProps } from './types';
 
 const Flex = ({
@@ -8,23 +8,29 @@ const Flex = ({
   children,
   direction,
   alignItems,
+  wrap,
   maxWidth,
   width,
   mt,
   mb,
   pb,
   pt,
+  pl,
+  pr,
 }: FlexProps) => (
   <StyledFlex
     as={tag}
     direction={direction}
     alignItems={alignItems}
+    wrap={wrap}
     maxWidth={maxWidth}
     width={width}
     mt={mt}
     mb={mb}
     pt={pt}
     pb={pb}
+    pl={pl}
+    pr={pr}
   >
     {children}
   </StyledFlex>

@@ -1,3 +1,4 @@
+// @flow
 import React, { useState } from 'react';
 import ScriptLoader from 'react-script-loader-hoc';
 import { Flex } from '../components/FlexBox';
@@ -5,8 +6,8 @@ import { InputForm } from '../components/Form';
 import SuggestionList from '../components/Suggestion';
 
 const Address = (
-  { scriptsLoadedSuccessfully, uuid, setAddress }
-  : {scriptsLoadedSuccessfully: boolean, uuid: string, setAddress: (number, number) => {}},
+  { scriptsLoadedSuccessfully, setAddress }
+  : {scriptsLoadedSuccessfully: boolean, setAddress: (number, number) => {}},
 ) => {
   const [suggestions, setSuggestions] = useState();
   const gMaps = global.google ? global.google.maps : null;
@@ -29,12 +30,12 @@ const Address = (
             )
           }
           onKeyUp={(e) => {
-            autoComplete.getQueryPredictions(
+            autoComplete.getPlacePredictions(
               {
                 input: e.target.value,
-                sessionToken: uuid,
-                types: ['route'],
-                componentRestrictions: {country: 'br'},
+                types: ['address'],
+                offset: 3,
+                componentRestrictions: { country: 'br' },
               }, (predictions, status) => (
                 gMaps.places.PlacesServiceStatus.OK === status && setSuggestions(predictions)
               ),
@@ -47,4 +48,6 @@ const Address = (
   return null;
 };
 
-export default ScriptLoader(`https://maps.googleapis.com/maps/api/js?key=${process.env.GMAPS_TOKEN}&libraries=places,geocoder`)(Address);
+export default ScriptLoader(
+  `https://maps.googleapis.com/maps/api/js?key=${process.env.GMAPS_TOKEN}&libraries=places`,
+)(Address);

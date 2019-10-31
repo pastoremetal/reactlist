@@ -1,18 +1,35 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
+import { Flex } from '../components/FlexBox';
 import { pocSearch } from '../graphql/poc';
+import ProductCard from '../components/ProductCard';
+
+const now = new Date().toISOString();
 
 const Products = ({ address }: {address: {}}) => {
-  const { loading, error, data } = useQuery(pocSearch, {
+  const useAddress = process.env.IS_MOCK === '0'
+    ? address
+    : {
+      lat: '-23.632919',
+      long: '-46.699453',
+    };
+  const { loading, data } = useQuery(pocSearch, {
     variables: {
-      algorithm: "NEAREST",
-      "lat": "-23.632919",
-      "long": "-46.699453",
-      "now": "2017-08-01T20:00:00.000Z"
-    }
+      ...useAddress,
+      algorithm: 'NEAREST',
+      now,
+    },
   });
-  return (<div />);
-}
+
+  return (
+    <Flex alignItems="center" direction="row" wrap>
+      {!loading && (
+        data.pocSearch[0].products.map((product, i) => (
+          <ProductCard key={i} product={product} />
+        ))
+      )}
+    </Flex>
+  );
+};
 
 export default Products;

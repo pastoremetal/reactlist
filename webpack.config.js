@@ -52,6 +52,11 @@ module.exports = {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000',
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        include: path.join(__dirname, 'assets'),
+        loader: 'url-loader?limit=30000&name=assets/[name].[ext]',
+      },
     ],
   },
 
